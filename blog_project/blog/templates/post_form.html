@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Form </title>
+    <style>
+    </style>
+</head>
+<body>
+    <div class="container">
+        <form method="post">
+            {% csrf_token %}
+            <label>Title:</label>
+            <input type="text" name="title" value="{% if post %}{{ post.title }}{% endif %}" required>
+            <label>Content:</label>
+            <textarea name="content" required>{% if post %}{{ post.content }}{% endif %}</textarea>
+            <button type="submit">Save</button>
+        </form>
+        <a href="{% url 'post_list' %}">Cancel</a>
+    </div>
+</body>
+</html>
